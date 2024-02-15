@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Web Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #login-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #scan-face-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <!-- Signin Section -->
+        <div id="signin-section">
+            <h2>Sign In</h2>
+            <button id="signin-btn">Sign In</button>
+        </div>
+
+        <!-- Signup Section -->
+        <div id="signup-section" class="hidden">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required><br>
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="create-password">Create Password:</label>
+                <input type="password" id="create-password" name="create-password" required><br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+        <!-- Facial Recognition Section -->
+        <div id="facial-section" class="hidden">
+            <h2>Scan Your Face</h2>
+            <button id="scan-face-btn">Scan Face</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const signinSection = document.getElementById('signin-section');
+            const signupSection = document.getElementById('signup-section');
+            const facialSection = document.getElementById('facial-section');
+
+            const signinBtn = document.getElementById('signin-btn');
+            const signupForm = document.getElementById('signup-form');
+            const scanFaceBtn = document.getElementById('scan-face-btn');
+
+            signinBtn.addEventListener('click', function () {
+                // Hide signinSection, show signupSection and facialSection
+                signinSection.style.display = 'none';
+                signupSection.style.display = 'block';
+                facialSection.style.display = 'block';
+            });
+
+            signupForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+                // Perform registration logic here (you may use AJAX to communicate with the server)
+
+                // For demonstration purposes, let's assume registration is successful
+                const isRegistered = true;
+
+                if (isRegistered) {
+                    // Hide signupSection and show facialSection
+                    signupSection.style.display = 'none';
+                    facialSection.style.display = 'block';
+                }
+            });
+
+            scanFaceBtn.addEventListener('click', function () {
+                // Add logic to trigger facial recognition, you may use AJAX to communicate with the server
+                // For demonstration purposes, let's assume facial recognition is triggered successfully
+                alert('Facial recognition triggered!');
+            });
+        });
+    </script>
+</body>
+</html>
